@@ -18,9 +18,19 @@ var gameHackStats = function() {
   // The hacker's budget
   this.money = 100;
   // The hacker's hacking stats
-  hackCrack = new crackStats(5, 5, 5, 5);
+  this.hackCrack = new crackStats(5, 5, 5, 5);
   
-  // 
+  // other stats
+  
+  // Targets Hacked
+  this.targetNum = 0;
+  // Successful Hacks
+  this.winNum = 0;
+  // Times Caught
+  this.loseNum = 0;
+  // Money Earned
+  this.totalEarn = 0;
+  
 
 };
 
@@ -41,8 +51,8 @@ var startGame(loadStats) {
   if (loadStats == null) {
     currentStats = new gameHackStats();
   } else if (!(typeof loadStats == 'gameHackStats')) {
-    
-    return();
+    window.alert('Error: Incompatible object. Cannot load game.');
+    return;
   } currentStats = loadStats;
 }
 
