@@ -24,6 +24,9 @@ var gameHackStats = function() {
 
 };
 
+// current game stats
+var currentStats = null;
+
 // Stat functions
 
 // generate enemy stats
@@ -33,5 +36,15 @@ var genEnemy = function(difficulty) {
   return new crackStats(genArr[0], genArr[1], genArr[2], genArr[3]);
 }
 
-var currentStats = null;
+// loads saved game from loadStats or starts new game if loadStats is empty
+var startGame(loadStats) {
+  if (loadStats == null) {
+    currentStats = new gameHackStats();
+  } else if (!(typeof loadStats == 'gameHackStats')) {
+    
+    return();
+  } currentStats = loadStats;
+}
+
+
 
