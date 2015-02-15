@@ -38,6 +38,8 @@ var gameHackStats = function() {
 var currentStats = null;
 
 // saved game stats
+// since loading a day 0 game would be the same as starting a new game,
+// only games at day one or later are saved
 var saveStats = [];
 for (var i = 0; i < 10; i++) {
 	saveStats.push([]);
@@ -64,9 +66,35 @@ function startGame(loadStats) {
 };
 
 // adds save game data to saveStats
+
+// clones the currentStats object
+
+// since loading a day 0 game would be the same as starting a new game,
+// only games at day one or later are saved
 function saveGame() {
+	var newStats = new gameHackStats();
+	newStats.theDay = currentStats.theDay;
+	newStats.govAlignment = currentStats.govAlignment;
+	newStats.money = currentStats.money;
+	
+	newStats.hackCrack.attack = currentStats.hackCrack.attack;
+	newStats.hackCrack.defense = currentStats.hackCrack.defense;
+	newStats.hackCrack.speed = currentStats.hackCrack.speed;
+	newStats.hackCrack.mask = currentStats.hackCrack.mask;
+	
+	newStats.targetNum = currentStats.targetNum;
+	newStats.winNum = currentStats.winNum;
+	newStats.loseNum = currentStats.loseNum;
+	newStats.totalEarn = currentStats.totalEarn;
+	var i = newStats.theDay - 1;
+	saveStats[i].push(newStats);
 };
 
 // deletes save data from saveStats and pushes down save data indexed above the deleted data
-function deleteSave() {
+// dayIndex == theDay - 1
+function deleteSave(dayIndex, saveIndex) {
+	var len = saveStats[dayIndex].length;
+	for (var i = saveIndex; i < len - 1; i++) {
+		saveStats[dayIndex][i] = saveStats[dayIndex][i + 1];
+	} saveStats[dayIndex].pop();
 };
