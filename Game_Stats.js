@@ -102,4 +102,11 @@ function deleteSave(dayIndex, saveIndex) {
 console.log(gameHackStats);
 currentStats =  new gameHackStats();
 console.log(currentStats);
+console.log(typeof currentStats);
+console.log(currentStats instanceof gameHackStats);
+var JasonTest = JSON.stringify(currentStats);
+console.log(JasonTest);
+console.log(typeof JasonTest);
+console.log(JSON.parse(JasonTest));
+console.log(JSON.parse(JasonTest) instanceof gameHackStats);
 console.log(document.cookie);
