@@ -98,3 +98,8 @@ function deleteSave(dayIndex, saveIndex) {
 		saveStats[dayIndex][i] = saveStats[dayIndex][i + 1];
 	} saveStats[dayIndex].pop();
 };
+
+console.log(gameHackStats);
+currentStats =  new gameHackStats();
+console.log(currentStats);
+console.log(document.cookie);
